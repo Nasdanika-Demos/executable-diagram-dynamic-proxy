@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -52,6 +53,7 @@ public class TestDiagramExecution {
 		
 		PropertySourceProcessorFactory<Invocable> processorFactory = new PropertySourceProcessorFactory<Invocable>("processor", document.getURI());
 		Map<Element, ProcessorInfo<Invocable>> processors = processorFactory.createProcessors(configs.values(), false, progressMonitor);
+		processors.values().stream().map(ProcessorInfo::getProcessor).filter(Objects::nonNull).forEach(System.out::println);
 		System.out.println(processors);
 		// TODO - dynamic proxy
 		
