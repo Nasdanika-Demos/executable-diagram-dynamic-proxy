@@ -54,10 +54,6 @@ public class TestDiagramExecution {
 		PropertySourceProcessorFactory<Invocable> processorFactory = new PropertySourceProcessorFactory<Invocable>("processor", document.getURI());
 		Map<Element, ProcessorInfo<Invocable>> processors = processorFactory.createProcessors(configs.values(), false, progressMonitor);
 		processors.values().stream().map(ProcessorInfo::getProcessor).filter(Objects::nonNull).forEach(System.out::println);
-		System.out.println(processors);
-		// TODO - dynamic proxy
-		
-		
 	}	
 	
 }

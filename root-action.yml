@@ -1,5 +1,5 @@
 Action:
-    icon: https://img.icons8.com/external-wanicon-lineal-color-wanicon/64/external-construction-construction-wanicon-lineal-color-wanicon-1.png
+    icon: https://docs.nasdanika.org/images/nasdanika-logo.png
     text: Executable Diagram Dynamic Proxy
     # location: https://github.com/Nasdanika-Demos - breaks the site in 2024.8.0, will be fixed in subsequent releases
     navigation:
