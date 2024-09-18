@@ -8,7 +8,7 @@
 	<name>Executable Diagram Dynamic Proxy</name>
 	<description>Demonstrates an executable diagram invoked by the client code via a dynamic proxy</description>
 	<properties>
-		<core.version>2024.9.0</core.version>
+		<core.version>2024.10.0-SNAPSHOT</core.version>
 	</properties>	
 
 	<build>
@@ -25,12 +25,12 @@
 		        <plugin>
 		            <groupId>org.apache.maven.plugins</groupId>
 		            <artifactId>maven-surefire-plugin</artifactId>
-		            <version>3.3.0</version>
+		            <version>3.5.0</version>
 		            <dependencies>
 		                <dependency>
 		                    <groupId>org.junit.jupiter</groupId>
 		                    <artifactId>junit-jupiter-engine</artifactId>
-		                    <version>5.10.2</version>
+		                    <version>5.11.0</version>
 		                </dependency>
 		            </dependencies>
 		        </plugin>
@@ -75,13 +75,13 @@
 		<dependency>
 		    <groupId>org.junit.jupiter</groupId>
 		    <artifactId>junit-jupiter-api</artifactId>
-		    <version>5.10.2</version>
+		    <version>5.11.0</version>
 		    <scope>test</scope>
 		</dependency>		
 		<dependency>
 		    <groupId>org.junit.jupiter</groupId>
 		    <artifactId>junit-jupiter-engine</artifactId>
-		    <version>5.10.2</version>
+		    <version>5.11.0</version>
 		    <scope>test</scope>
 		</dependency>		
 	</dependencies>

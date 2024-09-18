@@ -39,11 +39,13 @@ new org.nasdanika.common.Invocable() {
 	}	
 				
 	/**
-	 * This method is invoked by the dynamic proxy's Function.apply() method
+	 * This method is invoked by the dynamic proxy's Function.apply() method. 
+	 * The first argument is the proxy object - it can be used to resolve state or call other methods of the proxy.
+	 * The second is the apply()'s argument.
 	 */
 	def invoke(Object... args) {
   		System.out.println(args);
-  		System.out.println(element.getProperty("greeting") + " I have " + amountSupplier.get() + " dollars in my bank and just got " + args[0] + " from you. I'm so happy!!!");
+  		System.out.println(element.getProperty("greeting") + " I have " + amountSupplier.get() + " dollars in my bank and just got " + args[1] + " from you. I'm so happy!!!");
   	}
 	
 }

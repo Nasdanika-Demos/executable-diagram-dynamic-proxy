@@ -35,7 +35,6 @@ public class TestDiagramExecution {
 		java.util.function.Function<Object,Object> proxy = documentInvocableFactory.createProxy(
 				"bind",
 				null,
-				false,
 				progressMonitor,
 				java.util.function.Function.class);
 		
