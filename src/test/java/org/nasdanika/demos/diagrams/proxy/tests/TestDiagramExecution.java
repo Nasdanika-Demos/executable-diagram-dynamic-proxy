@@ -89,5 +89,31 @@ public class TestDiagramExecution {
 		System.out.println(result);
 		System.out.println(result.apply("YAML"));
 	}
+	
+	// --- Not related to diagrams ---
+		
+	@Test
+	public void testGroovy() throws IOException {
+		CapabilityLoader capabilityLoader = new CapabilityLoader();
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		URI requirement = URI.createFileURI(new File("test.groovy").getCanonicalPath());
+		Invocable invocable = capabilityLoader.loadOne(
+				ServiceCapabilityFactory.createRequirement(Invocable.class, null, requirement),
+				progressMonitor);
+		Object result = invocable.invoke();
+		System.out.println(result);
+	}
+	
+	@Test
+	public void testGroovyWithArguments() throws IOException {
+		CapabilityLoader capabilityLoader = new CapabilityLoader();
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		URI requirement = URI.createFileURI(new File("test.groovy").getCanonicalPath()).appendFragment("Hello");
+		Invocable invocable = capabilityLoader.loadOne(
+				ServiceCapabilityFactory.createRequirement(Invocable.class, null, requirement),
+				progressMonitor);
+		Object result = invocable.invoke("Universe");
+		System.out.println(result);
+	}
 		
 }
