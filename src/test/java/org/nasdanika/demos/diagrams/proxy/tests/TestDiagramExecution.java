@@ -65,6 +65,19 @@ public class TestDiagramExecution {
 	}
 	
 	@Test
+	public void testYAMLSpecWithFragment() throws IOException {
+		CapabilityLoader capabilityLoader = new CapabilityLoader();
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		URI specUri = URI.createFileURI(new File("diagram-function.yml").getCanonicalPath()).appendFragment("my-property=Hello");
+		Invocable invocable = capabilityLoader.loadOne(
+				ServiceCapabilityFactory.createRequirement(Invocable.class, null, new URIInvocableRequirement(specUri)),
+				progressMonitor);
+		Function<String,Object> result = invocable.invoke();
+		System.out.println(result);
+		System.out.println(result.apply("YAML"));
+	}
+	
+	@Test
 	public void testYAMLSpec() throws IOException {
 		CapabilityLoader capabilityLoader = new CapabilityLoader();
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();

@@ -3,3 +3,5 @@ diagram:
   processor: processor
   bind: bind
   interfaces: java.util.function.Function
+  properties:
+    my-property: Hola,
