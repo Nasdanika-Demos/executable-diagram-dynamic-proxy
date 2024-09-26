@@ -16,7 +16,7 @@ import org.nasdanika.graph.processor.ProcessorInfo
 // Script arguments for reference
 Loader loader = args[0];
 ProgressMonitor loaderProgressMonitor = args[1];
-Object data = args[2];
+Object data = args[2]; // From fragment
 ProcessorConfig config = args[3];
 BiConsumer<Element, BiConsumer<ProcessorInfo<Invocable>, ProgressMonitor>> infoProvider = args[4];
 Consumer<CompletionStage<?>> endpointWiringStageConsumer = args[5];

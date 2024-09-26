@@ -74,7 +74,7 @@ public class TestDiagramExecution {
 				progressMonitor);
 		Function<String,Object> result = invocable.invoke();
 		System.out.println(result);
-		System.out.println(result.apply("YAML"));
+		System.out.println(result.apply("15"));
 	}
 	
 	@Test

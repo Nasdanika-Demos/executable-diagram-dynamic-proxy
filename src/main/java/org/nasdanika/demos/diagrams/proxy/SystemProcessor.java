@@ -35,6 +35,7 @@ public class SystemProcessor {
 	 * @param loader
 	 * @param loaderProgressMonitor
 	 * @param data
+	 * @param fragment
 	 * @param config
 	 * @param infoProvider
 	 * @param endpointWiringStageConsumer
@@ -44,6 +45,7 @@ public class SystemProcessor {
 			Loader loader,
 			ProgressMonitor loaderProgressMonitor,
 			Object data,
+			String fragment,
 			ProcessorConfig config,
 			BiConsumer<Element, BiConsumer<ProcessorInfo<Invocable>, ProgressMonitor>> infoProvider,
 			Consumer<CompletionStage<?>> endpointWiringStageConsumer,
