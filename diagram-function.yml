@@ -4,4 +4,4 @@ diagram:
   bind: bind
   interfaces: java.util.function.Function
   properties:
-    my-property: Hola,
+    my-property: ${env.GREETING|Hola,}
