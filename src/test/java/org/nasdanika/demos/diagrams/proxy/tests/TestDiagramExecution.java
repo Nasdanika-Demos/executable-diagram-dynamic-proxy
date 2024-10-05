@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.apache.groovy.groovysh.Groovysh;
+import org.codehaus.groovy.tools.shell.IO;
 import org.eclipse.emf.common.util.URI;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.capability.CapabilityLoader;
@@ -17,6 +19,8 @@ import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.drawio.Document;
 import org.nasdanika.drawio.processor.DocumentInvocableFactory;
+
+import groovy.lang.Binding;
 
 public class TestDiagramExecution {
 
@@ -127,6 +131,14 @@ public class TestDiagramExecution {
 				progressMonitor);
 		Object result = invocable.invoke("Universe");
 		System.out.println(result);
+	}
+	
+	@Test
+	public void testGroovysh() {		
+		Binding binding = new Binding();
+		binding.setProperty("test", "Test");
+		Groovysh groovysh = new Groovysh(binding, new IO());
+		groovysh.run("2 + 3");
 	}
 		
 }
