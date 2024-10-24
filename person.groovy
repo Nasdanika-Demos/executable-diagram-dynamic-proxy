@@ -46,6 +46,7 @@ new org.nasdanika.common.Invocable() {
 	def invoke(Object... args) {
   		System.out.println(args);
   		System.out.println(element.getProperty("greeting") + " I have " + amountSupplier.get() + " dollars in my bank and just got " + args[1] + " from you. I'm so happy!!!");
+		args.length; // Just to return something  
   	}
 	
 }

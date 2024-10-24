@@ -39,10 +39,14 @@ public class TestDiagramExecution {
 		java.util.function.Function<Object,Object> proxy = documentInvocableFactory.createProxy(
 				"bind",
 				null,
+				info -> {
+					System.out.println("Info: " + info);
+					return info.getProcessor();
+				},
 				progressMonitor,
 				java.util.function.Function.class);
 		
-		System.out.println(proxy.apply(33));
+		System.out.println("Result: " + proxy.apply(33));
 	}	
 	
 	// implementation 'org.freemarker:freemarker:2.3.33'
