@@ -18,7 +18,7 @@ import org.nasdanika.common.Invocable;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.drawio.Document;
-import org.nasdanika.drawio.processor.DocumentInvocableFactory;
+import org.nasdanika.drawio.processor.ElementInvocableFactory;
 
 import groovy.lang.Binding;
 
@@ -35,8 +35,8 @@ public class TestDiagramExecution {
 
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();				
 		
-		DocumentInvocableFactory documentInvocableFactory = new DocumentInvocableFactory(document, "processor");
-		java.util.function.Function<Object,Object> proxy = documentInvocableFactory.createProxy(
+		ElementInvocableFactory elementInvocableFactory = new ElementInvocableFactory(document, "processor");
+		java.util.function.Function<Object,Object> proxy = elementInvocableFactory.createProxy(
 				"bind",
 				null,
 				info -> {
@@ -58,6 +58,7 @@ public class TestDiagramExecution {
 		URI specUri = URI.createFileURI(new File("diagram.drawio").getCanonicalPath());
 		DiagramRequirement requirement = new DiagramRequirement(
 				specUri, 
+				null,
 				null,
 				null,
 				null, 
