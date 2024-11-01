@@ -39,10 +39,6 @@ public class TestDiagramExecution {
 		java.util.function.Function<Object,Object> proxy = elementInvocableFactory.createProxy(
 				"bind",
 				null,
-				info -> {
-					System.out.println("Info: " + info);
-					return info.getProcessor();
-				},
 				progressMonitor,
 				java.util.function.Function.class);
 		
