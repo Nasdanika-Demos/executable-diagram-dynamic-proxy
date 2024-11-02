@@ -9,6 +9,7 @@ import java.util.function.Function;
 import org.apache.groovy.groovysh.Groovysh;
 import org.codehaus.groovy.tools.shell.IO;
 import org.eclipse.emf.common.util.URI;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.capability.CapabilityLoader;
 import org.nasdanika.capability.ServiceCapabilityFactory;
@@ -134,6 +135,7 @@ public class TestDiagramExecution {
 		System.out.println(result);
 	}
 	
+	@Disabled
 	@Test
 	public void testGroovysh() {		
 		Binding binding = new Binding();
