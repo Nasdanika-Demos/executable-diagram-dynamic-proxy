@@ -8,7 +8,7 @@
 	<name>Executable Diagram Dynamic Proxy</name>
 	<description>Demonstrates an executable diagram invoked by the client code via a dynamic proxy</description>
 	<properties>
-		<core.version>2024.11.0</core.version>
+		<core.version>2024.11.1</core.version>
 	</properties>	
 
 	<build>
