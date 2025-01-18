@@ -30,7 +30,7 @@ public class SystemProcessor {
 	}
 
 	/**
-	 * This is the constructor signature for graph processor classes which are to e instantiated by URIInvocableCapabilityFactory (org.nasdanika.capability.factories.URIInvocableCapabilityFactory).
+	 * This is the constructor signature for graph processor classes which are to be instantiated by URIInvocableCapabilityFactory (org.nasdanika.capability.factories.URIInvocableCapabilityFactory).
 	 * Config may be of specific types {@link ProcessorConfig} - {@link NodeProcessorConfig} or {@link ConnectionProcessorConfig}.  
 	 * @param loader
 	 * @param loaderProgressMonitor

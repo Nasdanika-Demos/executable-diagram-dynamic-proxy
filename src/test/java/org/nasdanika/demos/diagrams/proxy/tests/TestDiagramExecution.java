@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 import org.apache.groovy.groovysh.Groovysh;
@@ -18,12 +19,38 @@ import org.nasdanika.capability.requirements.URIInvocableRequirement;
 import org.nasdanika.common.Invocable;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
+import org.nasdanika.demos.diagrams.dispatch.DispatchTarget;
 import org.nasdanika.drawio.Document;
 import org.nasdanika.drawio.processor.ElementInvocableFactory;
+import org.nasdanika.graph.Element;
 
 import groovy.lang.Binding;
 
 public class TestDiagramExecution {
+	
+	@Test
+	public void testVisit() throws Exception {
+		Function<URI, InputStream> uriHandler = null;				
+		Function<String, String> propertySource = Map.of("my-property", "Hello")::get;		
+		Document document = Document.load(
+				new File("diagram.drawio"),
+				uriHandler,
+				propertySource);
+		Consumer<Element> visitor = System.out::println;
+		document.accept(visitor);
+	}
+	
+	@Test
+	public void testDispatch() throws Exception {
+		Function<URI, InputStream> uriHandler = null;				
+		Function<String, String> propertySource = Map.of("my-property", "Hello")::get;		
+		Document document = Document.load(
+				new File("diagram.drawio"),
+				uriHandler,
+				propertySource);
+		Object target = new DispatchTarget();
+		document.dispatch(target);
+	}
 
 	@Test
 	public void testDynamicProxy() throws Exception {
