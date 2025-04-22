@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.nasdanika.demos</groupId>
-	<version>2025.3.0</version>
+	<version>2025.4.0</version>
 	<artifactId>executable-diagram-dynamic-proxy</artifactId>
 	<packaging>jar</packaging>
 	<name>Executable Diagram Dynamic Proxy</name>
 	<description>Demonstrates an executable diagram invoked by the client code via a dynamic proxy</description>
 	<properties>
-		<core.version>2025.3.0</core.version>
+		<core.version>2025.4.0</core.version>
 	</properties>	
 
 	<build>
