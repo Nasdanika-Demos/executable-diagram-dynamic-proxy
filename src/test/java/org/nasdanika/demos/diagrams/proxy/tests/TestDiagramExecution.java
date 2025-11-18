@@ -7,10 +7,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import org.apache.groovy.groovysh.Groovysh;
-import org.codehaus.groovy.tools.shell.IO;
 import org.eclipse.emf.common.util.URI;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.capability.CapabilityLoader;
 import org.nasdanika.capability.ServiceCapabilityFactory;
@@ -24,18 +21,18 @@ import org.nasdanika.drawio.Document;
 import org.nasdanika.drawio.processor.ElementInvocableFactory;
 import org.nasdanika.graph.Element;
 
-import groovy.lang.Binding;
-
 public class TestDiagramExecution {
 	
 	@Test
 	public void testVisit() throws Exception {
 		Function<URI, InputStream> uriHandler = null;				
-		Function<String, String> propertySource = Map.of("my-property", "Hello")::get;		
-		Document document = Document.load(
-				new File("diagram.drawio"),
-				uriHandler,
-				propertySource);
+		Function<String, String> propertySource = Map.of("my-property", "Hello")::get;
+		
+		Document.Context docContext = Document.Context.from(
+				Document.Context.fromURIHandler(uriHandler),
+				Document.Context.fromPropertySource(propertySource));
+		
+		Document document = Document.load(new File("diagram.drawio"), docContext);
 		Consumer<Element> visitor = System.out::println;
 		document.accept(visitor);
 	}
@@ -44,10 +41,12 @@ public class TestDiagramExecution {
 	public void testDispatch() throws Exception {
 		Function<URI, InputStream> uriHandler = null;				
 		Function<String, String> propertySource = Map.of("my-property", "Hello")::get;		
-		Document document = Document.load(
-				new File("diagram.drawio"),
-				uriHandler,
-				propertySource);
+		
+		Document.Context docContext = Document.Context.from(
+				Document.Context.fromURIHandler(uriHandler),
+				Document.Context.fromPropertySource(propertySource));
+		
+		Document document = Document.load(new File("diagram.drawio"), docContext);
 		Object target = new DispatchTarget();
 		document.dispatch(target);
 	}
@@ -56,10 +55,12 @@ public class TestDiagramExecution {
 	public void testDynamicProxy() throws Exception {
 		Function<URI, InputStream> uriHandler = null;				
 		Function<String, String> propertySource = Map.of("my-property", "Hello")::get;		
-		Document document = Document.load(
-				new File("diagram.drawio"),
-				uriHandler,
-				propertySource);
+		
+		Document.Context docContext = Document.Context.from(
+				Document.Context.fromURIHandler(uriHandler),
+				Document.Context.fromPropertySource(propertySource));
+		
+		Document document = Document.load(new File("diagram.drawio"), docContext);
 
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();				
 		
@@ -160,15 +161,6 @@ public class TestDiagramExecution {
 				progressMonitor);
 		Object result = invocable.invoke("Universe");
 		System.out.println(result);
-	}
-	
-	@Disabled
-	@Test
-	public void testGroovysh() {		
-		Binding binding = new Binding();
-		binding.setProperty("test", "Test");
-		Groovysh groovysh = new Groovysh(binding, new IO());
-		groovysh.run("2 + 3");
 	}
 		
 }
