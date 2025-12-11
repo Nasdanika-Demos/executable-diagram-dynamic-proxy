@@ -1,3 +1,5 @@
+package org.nasdanika.demos.diagrams.proxy;
+
 import java.util.concurrent.CompletionStage
 import java.util.function.BiConsumer
 import java.util.function.Consumer
@@ -17,8 +19,8 @@ import org.nasdanika.graph.processor.ProcessorInfo
 Loader loader = args[0];
 ProgressMonitor loaderProgressMonitor = args[1];
 Object data = args[2]; // From fragment
-ProcessorConfig config = args[3];
-BiConsumer<Element, BiConsumer<ProcessorInfo<Invocable>, ProgressMonitor>> infoProvider = args[4];
+ProcessorConfig<Object,Object,Object> config = args[3];
+BiConsumer<Element, BiConsumer<ProcessorInfo<Object,Object,Object,Invocable>, ProgressMonitor>> infoProvider = args[4];
 Consumer<CompletionStage<?>> endpointWiringStageConsumer = args[5];
 ProgressMonitor wiringProgressMonitor = args[6];
 

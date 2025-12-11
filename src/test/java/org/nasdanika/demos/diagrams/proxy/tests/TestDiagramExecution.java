@@ -3,6 +3,7 @@ package org.nasdanika.demos.diagrams.proxy.tests;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.AccessibleObject;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -20,6 +21,7 @@ import org.nasdanika.demos.diagrams.dispatch.DispatchTarget;
 import org.nasdanika.drawio.Document;
 import org.nasdanika.drawio.processor.ElementInvocableFactory;
 import org.nasdanika.graph.Element;
+import org.nasdanika.graph.processor.EndpointFactory;
 
 public class TestDiagramExecution {
 	
@@ -64,9 +66,19 @@ public class TestDiagramExecution {
 
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();				
 		
-		ElementInvocableFactory elementInvocableFactory = new ElementInvocableFactory(document, "processor");
+		ElementInvocableFactory<Object,Object,Object> elementInvocableFactory = new ElementInvocableFactory<Object,Object,Object>(document, "processor") {
+		
+			@Override
+			protected boolean isMakeAccessible(AccessibleObject accessibleObject) {
+				System.out.println("Making accessible: " + accessibleObject);
+				return true;
+			}
+			
+		};
+		
 		java.util.function.Function<Object,Object> proxy = elementInvocableFactory.createProxy(
 				"bind",
+				EndpointFactory.nopEndpointFactory(),
 				null,
 				progressMonitor,
 				java.util.function.Function.class);
@@ -91,6 +103,7 @@ public class TestDiagramExecution {
 				"processor", 
 				"bind", 
 				getClass().getClassLoader(), 
+				ao -> true,
 				new Class<?>[] { java.util.function.Function.class });
 		
 		Function<String,Object> result = capabilityLoader.loadOne(requirement, progressMonitor);
